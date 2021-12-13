@@ -1,0 +1,43 @@
+Information: Updating design information... (UID-85)
+Warning: Design 'DLX_M32_C4_N5' contains 1 high-fanout nets. A fanout number of 1000 will be used for delay calculations involving these nets. (TIM-134)
+ 
+****************************************
+Report : timing
+        -path full
+        -delay max
+        -max_paths 1
+Design : DLX_M32_C4_N5
+Version: F-2011.09-SP3
+Date   : Mon Oct  7 17:54:49 2019
+****************************************
+
+ # A fanout number of 1000 was used for high fanout net computations.
+
+Operating Conditions: typical   Library: NangateOpenCellLibrary
+Wire Load Model Mode: top
+
+  Startpoint: DP/FU/PC/temp_reg[31]
+              (rising edge-triggered flip-flop)
+  Endpoint: IRAM_Addr[31]
+            (output port)
+  Path Group: (none)
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  DLX_M32_C4_N5      5K_hvratio_1_1        NangateOpenCellLibrary
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  DP/FU/PC/temp_reg[31]/CK (DFF_X1)        0.00 #     0.00 r
+  DP/FU/PC/temp_reg[31]/Q (DFF_X1)         0.09       0.09 r
+  DP/FU/PC/o[31] (reg_0)                   0.00       0.09 r
+  DP/FU/PCtoIM[31] (fetchUnit)             0.00       0.09 r
+  DP/PCtoIM[31] (dataPath_M32_C4_N5)       0.00       0.09 r
+  IRAM_Addr[31] (out)                      0.00       0.09 r
+  data arrival time                                   0.09
+  -----------------------------------------------------------
+  (Path is unconstrained)
+
+
+1

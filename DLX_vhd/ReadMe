@@ -1,0 +1,2 @@
+The Compilation_Script.tcl is a source file for the simulation using Modelsim.
+It contains the command for compiling all of the DLX files in the correct order.

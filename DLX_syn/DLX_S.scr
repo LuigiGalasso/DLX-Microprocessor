@@ -1,0 +1,69 @@
+#
+analyze -library WORK -format vhdl {000-globals.vhd}
+#Fetch
+analyze -library WORK -format vhdl {a.b-DataPath.core/a.b.a-reg.vhd}
+analyze -library WORK -format vhdl {a.b-DataPath.core/a.b.b-adder.vhd}
+analyze -library WORK -format vhdl {a.b-DataPath.core/a.b.c-InstructionRegister.vhd}
+analyze -library WORK -format vhdl {a.b-DataPath.core/a.b.d-mux21.vhd}
+
+
+#Decode
+analyze -library WORK -format vhdl {a.b-DataPath.core/a.b.e-BranchUnit.vhd}
+analyze -library WORK -format vhdl {a.b-DataPath.core/a.b.f-mux41.vhd}
+analyze -library WORK -format vhdl {a.b-DataPath.core/a.b.g-registerfile.vhd  }
+#Execute
+#P4ADDER
+analyze -library WORK -format vhdl {a.b-DataPath.core/a.b.h-ALU.core/a.b.h.a-fa.vhd}
+analyze -library WORK -format vhdl {a.b-DataPath.core/a.b.h-ALU.core/a.b.h.b-rca.vhd  }
+analyze -library WORK -format vhdl {a.b-DataPath.core/a.b.h-ALU.core/a.b.h.c-CSb.vhd  }
+analyze -library WORK -format vhdl {a.b-DataPath.core/a.b.h-ALU.core/a.b.h.d-CSA.vhd }
+analyze -library WORK -format vhdl {a.b-DataPath.core/a.b.h-ALU.core/a.b.h.e-Pg.vhd  }
+analyze -library WORK -format vhdl {a.b-DataPath.core/a.b.h-ALU.core/a.b.h.f-G.vhd  }
+analyze -library WORK -format vhdl {a.b-DataPath.core/a.b.h-ALU.core/a.b.h.g-PGnet.vhd   }
+analyze -library WORK -format vhdl {a.b-DataPath.core/a.b.h-ALU.core/a.b.h.h-sparsetree.vhd  }
+analyze -library WORK -format vhdl {a.b-DataPath.core/a.b.h-ALU.core/a.b.h.i-P4adder.vhd }
+#
+analyze -library WORK -format vhdl {a.b-DataPath.core/a.b.h-ALU.core/a.b.h.j-comparator.vhd}
+analyze -library WORK -format vhdl {a.b-DataPath.core/a.b.h-ALU.core/a.b.h.k-shifter.vhd}
+analyze -library WORK -format vhdl {a.b-DataPath.core/a.b.h-ALU.core/a.b.h-alu.vhd}
+
+#Memory Unit
+#WB Unit
+
+#DATAPATH
+analyze -library WORK -format vhdl {a.b-DataPath.core/a.b.i-fetchUnit.vhd}
+analyze -library WORK -format vhdl {a.b-DataPath.core/a.b.j-DecodeUnit.vhd}
+analyze -library WORK -format vhdl {a.b-DataPath.core/a.b.k-executeUnit.vhd}
+analyze -library WORK -format vhdl {a.b-DataPath.core/a.b.l-memoryUnit.vhd}
+analyze -library WORK -format vhdl {a.b-DataPath.core/a.b.m-WBunit.vhd}
+analyze -library WORK -format vhdl {a.b-DataPath.core/a.b-dataPath.vhd}
+
+#Control Unit
+analyze -library WORK -format vhdl {a.a-HWCU.vhd}
+
+#DLX
+analyze -library WORK -format vhdl {a-DLX.vhd}
+
+##############################################################
+# elaborating the top entity 
+
+
+
+elaborate DLX -architecture DLX_RTL -library WORK -parameters "M = 32, C = 4, N = 5"
+compile
+report_timing  > Report_DLX_time.txt
+report_power > Report_DLX_pow.txt
+report_area > Report_DLX_area.txt
+create_clock -name "Clk" -period 1.28 Clk
+set_max_delay 1.28 -from [all_inputs] -to [all_outputs]
+compile -map_effort high
+report_timing > Report_DLX_TOPT_time.txt
+report_power > Report_DLX_TOPT_pow.txt
+report_area > Report_DLX_TOPT_area.txt
+##########################################
+
+# saving files
+write -hierarchy -format ddc -output DLX-TOPT.ddc
+write -hierarchy -format vhdl -output DLX-TOPT.vhdl
+write -hierarchy -format verilog -output DLX-TOPT.v
+write_sdc DLX-TOPT.sdc

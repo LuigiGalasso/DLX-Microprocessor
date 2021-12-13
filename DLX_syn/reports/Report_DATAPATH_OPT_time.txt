@@ -1,0 +1,90 @@
+Information: Updating design information... (UID-85)
+Warning: Design 'dataPath_M32_C4_N5' contains 1 high-fanout nets. A fanout number of 1000 will be used for delay calculations involving these nets. (TIM-134)
+ 
+****************************************
+Report : timing
+        -path full
+        -delay max
+        -max_paths 1
+Design : dataPath_M32_C4_N5
+Version: F-2011.09-SP3
+Date   : Mon Oct  7 17:54:00 2019
+****************************************
+
+ # A fanout number of 1000 was used for high fanout net computations.
+
+Operating Conditions: typical   Library: NangateOpenCellLibrary
+Wire Load Model Mode: top
+
+  Startpoint: DU/OUT2_REG/temp_reg[6]
+              (rising edge-triggered flip-flop clocked by clock)
+  Endpoint: EU/ALUout_REG/temp_reg[30]
+            (rising edge-triggered flip-flop clocked by clock)
+  Path Group: clock
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  dataPath_M32_C4_N5 5K_hvratio_1_1        NangateOpenCellLibrary
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clock (rise edge)                                 0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  DU/OUT2_REG/temp_reg[6]/CK (DFF_X1)                     0.00 #     0.00 r
+  DU/OUT2_REG/temp_reg[6]/Q (DFF_X1)                      0.09       0.09 r
+  DU/OUT2_REG/o[6] (reg_9)                                0.00       0.09 r
+  DU/OUT2[6] (DecodeUnit)                                 0.00       0.09 r
+  EU/OUT2RF[6] (executeUnit_M32_C4)                       0.00       0.09 r
+  EU/MUX/a[6] (Mux21_4)                                   0.00       0.09 r
+  EU/MUX/U69/Z (MUX2_X1)                                  0.05       0.13 r
+  EU/MUX/y[6] (Mux21_4)                                   0.00       0.13 r
+  EU/MUXWITH4/b[6] (Mux21_2)                              0.00       0.13 r
+  EU/MUXWITH4/U29/Z (MUX2_X2)                             0.07       0.20 r
+  EU/MUXWITH4/y[6] (Mux21_2)                              0.00       0.20 r
+  EU/ALUset/DATA2[6] (ALU_M32_C4)                         0.00       0.20 r
+  EU/ALUset/SHIFTOP/B[6] (SHIFTER_M32_N5)                 0.00       0.20 r
+  EU/ALUset/SHIFTOP/sll_29/SH[6] (SHIFTER_M32_N5_DW01_ash_0)
+                                                          0.00       0.20 r
+  EU/ALUset/SHIFTOP/sll_29/U368/ZN (NAND3_X1)             0.05       0.25 f
+  EU/ALUset/SHIFTOP/sll_29/U428/ZN (NOR2_X1)              0.05       0.30 r
+  EU/ALUset/SHIFTOP/sll_29/U344/ZN (NAND4_X1)             0.04       0.34 f
+  EU/ALUset/SHIFTOP/sll_29/U312/ZN (NAND2_X1)             0.03       0.37 r
+  EU/ALUset/SHIFTOP/sll_29/U343/ZN (NAND2_X1)             0.03       0.40 f
+  EU/ALUset/SHIFTOP/sll_29/U341/ZN (NAND2_X1)             0.04       0.44 r
+  EU/ALUset/SHIFTOP/sll_29/U430/Z (BUF_X1)                0.05       0.49 r
+  EU/ALUset/SHIFTOP/sll_29/U216/Z (BUF_X1)                0.05       0.54 r
+  EU/ALUset/SHIFTOP/sll_29/M1_0_24/Z (MUX2_X1)            0.08       0.62 f
+  EU/ALUset/SHIFTOP/sll_29/U254/Z (MUX2_X1)               0.07       0.69 f
+  EU/ALUset/SHIFTOP/sll_29/U3/Z (MUX2_X1)                 0.07       0.76 f
+  EU/ALUset/SHIFTOP/sll_29/U731/ZN (NAND2_X1)             0.03       0.79 r
+  EU/ALUset/SHIFTOP/sll_29/U732/ZN (NAND2_X1)             0.02       0.81 f
+  EU/ALUset/SHIFTOP/sll_29/M1_4_30/Z (MUX2_X1)            0.07       0.87 f
+  EU/ALUset/SHIFTOP/sll_29/U617/ZN (NAND2_X1)             0.03       0.90 r
+  EU/ALUset/SHIFTOP/sll_29/U797/ZN (NAND2_X1)             0.02       0.93 f
+  EU/ALUset/SHIFTOP/sll_29/B[30] (SHIFTER_M32_N5_DW01_ash_0)
+                                                          0.00       0.93 f
+  EU/ALUset/SHIFTOP/U10/Z (MUX2_X1)                       0.07       0.99 f
+  EU/ALUset/SHIFTOP/OUTPUT[30] (SHIFTER_M32_N5)           0.00       0.99 f
+  EU/ALUset/U338/ZN (AOI22_X1)                            0.05       1.04 r
+  EU/ALUset/U9/ZN (NAND2_X1)                              0.03       1.07 f
+  EU/ALUset/OUTALU[30] (ALU_M32_C4)                       0.00       1.07 f
+  EU/ALUout_REG/i[30] (reg_6)                             0.00       1.07 f
+  EU/ALUout_REG/U62/ZN (INV_X1)                           0.03       1.10 r
+  EU/ALUout_REG/U29/ZN (OAI22_X1)                         0.03       1.13 f
+  EU/ALUout_REG/temp_reg[30]/D (DFF_X1)                   0.01       1.14 f
+  data arrival time                                                  1.14
+
+  clock clock (rise edge)                                 1.04       1.04
+  clock network delay (ideal)                             0.00       1.04
+  EU/ALUout_REG/temp_reg[30]/CK (DFF_X1)                  0.00       1.04 r
+  library setup time                                     -0.04       1.00
+  data required time                                                 1.00
+  --------------------------------------------------------------------------
+  data required time                                                 1.00
+  data arrival time                                                 -1.14
+  --------------------------------------------------------------------------
+  slack (VIOLATED)                                                  -0.14
+
+
+1

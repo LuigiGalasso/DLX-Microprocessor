@@ -1,0 +1,50 @@
+Information: Updating design information... (UID-85)
+ 
+****************************************
+Report : timing
+        -path full
+        -delay max
+        -max_paths 1
+Design : Cu_M32_FUNC_SIZE11_OP_CODE_SIZE6_ALU_OP_CODE_SIZE4_CW_SIZE17
+Version: F-2011.09-SP3
+Date   : Mon Oct  7 17:54:12 2019
+****************************************
+
+Operating Conditions: typical   Library: NangateOpenCellLibrary
+Wire Load Model Mode: top
+
+  Startpoint: aluOpcode3_reg[2]
+              (rising edge-triggered flip-flop clocked by Clk)
+  Endpoint: aluOpcode3_reg[2]
+            (rising edge-triggered flip-flop clocked by Clk)
+  Path Group: Clk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  Cu_M32_FUNC_SIZE11_OP_CODE_SIZE6_ALU_OP_CODE_SIZE4_CW_SIZE17
+                     5K_hvratio_1_1        NangateOpenCellLibrary
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock Clk (rise edge)                    0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  aluOpcode3_reg[2]/CK (DFF_X1)            0.00       0.00 r
+  aluOpcode3_reg[2]/QN (DFF_X1)            0.06       0.06 r
+  U240/ZN (OAI221_X1)                      0.03       0.10 f
+  aluOpcode3_reg[2]/D (DFF_X1)             0.01       0.11 f
+  data arrival time                                   0.11
+
+  clock Clk (rise edge)                    0.16       0.16
+  clock network delay (ideal)              0.00       0.16
+  aluOpcode3_reg[2]/CK (DFF_X1)            0.00       0.16 r
+  library setup time                      -0.05       0.11
+  data required time                                  0.11
+  -----------------------------------------------------------
+  data required time                                  0.11
+  data arrival time                                  -0.11
+  -----------------------------------------------------------
+  slack (MET)                                         0.01
+
+
+1
